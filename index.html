@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Toolkit</title>
+</head>
+
+
+<body>
+    <div class="sidebar">
+        <div class="category-list" id="categoryList">
+            <button class="category-item active">基础</button>
+            <button class="category-item">文本</button>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="middle-content">
+            <div class="search-header">
+                <input type="text" class="search-header-input" placeholder="搜索函数...">
+                <button class="search-header-button">搜索</button>
+            </div>
+            <div class="content-top">
+                <ul class="function-list" id="functionList">
+                    
+                    <li class="function-item">
+                        <div class="function-name">Character.FromNumber</div>
+                        <div class="function-desc">将数字转换为对应的Unicode字符</div>
+                    </li>
+                    <li class="function-item">
+                        <div class="function-name">Character.ToNumber</div>
+                        <div class="function-desc">将字符转换为对应的Unicode数字</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-box-container">
+            <textarea class="text-box text-box-upper" placeholder="上部文本框 (30%高度)"></textarea>
+            <textarea class="text-box text-box-lower" placeholder="下部文本框 (剩余高度)"></textarea>
+        </div>
+    </div>
+</body>
+
+</html>

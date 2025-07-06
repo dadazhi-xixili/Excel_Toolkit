@@ -1,0 +1,300 @@
+/* 字体定义：加载自定义字体 */
+@font-face {
+    font-family: 'Sarasa';
+    /* 字体家族名称 */
+    src: url('SarasaUiSC-Regular.ttf') format('truetype');
+    /* 字体文件路径 */
+    font-weight: normal;
+    /* 字体粗细 */
+    font-style: normal;
+    /* 字体样式 */
+    font-display: swap;
+    /* 字体加载策略 */
+}
+
+/* 全局重置样式 */
+* {
+    margin: 0;
+    /* 清除所有元素的外边距 */
+    padding: 0;
+    /* 清除所有元素的内边距 */
+    box-sizing: border-box;
+    /* 盒模型计算方式：包含边框和内边距 */
+    font-family: 'Sarasa', '微软雅黑'
+        /* 字体优先级 */
+}
+
+/* 整个表格的基础样式 */
+table {
+    /* 合并相邻边框，避免双线效果 */
+    border-collapse: collapse;
+
+    /* 表格外部的空白间距 */
+    margin: 5px;
+
+    /* 表头部分样式 */
+    thead {
+
+        /* 表头单元格(th)样式 */
+        th {
+            /* 浅灰色背景 */
+            background-color: #f0f0f0;
+            /* 1px宽的浅灰色边框 */
+            border: 1px solid #d4d4d4;
+            /* 内边距：上下6px，左右10px */
+            padding: 6px 10px;
+            /* 文字居中 */
+            text-align: center;
+            /* 文字加粗 */
+            font-weight: bold;
+            /* 深灰色文字 */
+            color: #555;
+
+            /* 左上角第一个特殊单元格样式 */
+            &:first-child {
+                /* 比表头略深的灰色 */
+                background-color: #e0e0e0;
+            }
+        }
+    }
+
+    /* 表格主体部分样式 */
+    tbody {
+
+        /* 主体单元格(td)样式 */
+        td {
+            /* 1px宽的浅灰色边框 */
+            border: 1px solid #d4d4d4;
+            /* 内边距：上下6px，左右10px */
+            padding: 6px 10px;
+            /* 最小宽度80像素 */
+            min-width: 60px;
+            /* 白色背景 */
+            background-color: white;
+
+            /* 第一列单元格特殊样式(行号列) */
+            &:first-child {
+                min-width: 40px;
+                /* 和表头相同的浅灰色背景 */
+                background-color: #f0f0f0;
+                /* 完整边框 */
+                border: 1px solid #d4d4d4;
+                /* 内边距 */
+                padding: 6px 10px;
+                /* 文字居中 */
+                text-align: center;
+                /* 文字加粗 */
+                font-weight: bold;
+                /* 深灰色文字 */
+                color: #555;
+            }
+        }
+    }
+}
+
+/* 根元素和body设置 */
+html {
+    height: 100%;
+    /* 使html和body占满整个视口高度 */
+
+    /* body的特殊设置 */
+    & body {
+        height: 100%;
+        display: flex;
+        /* 启用弹性布局 */
+        background-color: #f8f8f8;
+        /* 页面背景色 */
+    }
+}
+
+/* 导航栏主容器 */
+.导航栏 {
+    background-color: #217346;
+    /* 主绿色背景 */
+    width: 30%;
+    /* 宽度占25% */
+    max-width: 400px;
+    /* 最大宽度限制 */
+    min-width: 275px;
+    /* 最小宽度限制 */
+    flex: 2;
+    /* 在flex布局中占比 */
+    display: flex;
+    /* 启用flex布局 */
+    flex-direction: column;
+    /* 垂直排列子元素 */
+    border-right: 1px solid #d0d0d0;
+    /* 右侧边框 */
+
+    /* 搜索栏区域 */
+    &>.搜索栏 {
+        display: flex;
+        /* flex布局 */
+        align-items: center;
+        /* 垂直居中 */
+        padding: 10px;
+        /* 内边距 */
+        background-color: #2d7d4f;
+        /* 深绿色背景 */
+        border-bottom: 1px solid #1a5c38;
+        /* 底部边框 */
+
+        /* 搜索输入框 */
+        &>input {
+            flex: 1;
+            /* 自动填充剩余空间 */
+            height: 28px;
+            /* 固定高度 */
+            min-width: 0;
+            /* 解决flex项目最小宽度问题 */
+            padding: 0 8px;
+            /* 文字内边距 */
+            border: 1px solid #1a5c38;
+            /* 边框 */
+            border-radius: 3px;
+            /* 圆角 */
+            background-color: #f1f8f4;
+            /* 浅绿色背景 */
+        }
+
+        /* 搜索按钮 */
+        &>button {
+            height: 28px;
+            /* 与输入框同高 */
+            width: 60px;
+            /* 固定宽度 */
+            margin-left: 8px;
+            /* 与输入框间距 */
+            background-color: #4a9d66;
+            /* 按钮绿色 */
+            color: white;
+            /* 文字白色 */
+            border: 1px solid #3a7d52;
+            /* 边框 */
+            border-radius: 3px;
+            /* 圆角 */
+            cursor: pointer;
+            /* 鼠标手型 */
+
+            /* 鼠标悬停状态 */
+            &:hover {
+                background-color: #3a8c56;
+                /* 深绿色 */
+            }
+        }
+    }
+
+    /* 分类区域 */
+    &>.分类 {
+        display: flex;
+        /* flex布局 */
+        flex: 1;
+        /* 填充剩余空间 */
+        overflow: hidden;
+        /* 隐藏溢出内容 */
+
+        /* 一级列表（左侧窄栏） */
+        &>.一级列表 {
+            min-width: 50px;
+            /* 最小宽度 */
+            background-color: #2d7d4f;
+            /* 绿色背景 */
+            color: #f0f0f0;
+            /* 文字浅色 */
+
+            /* 一级列表项 */
+            &>.一级列表项 {
+                padding: 12px 8px;
+                /* 内边距 */
+                border-bottom: 1px solid #3a8c56;
+                /* 底部边框 */
+                cursor: pointer;
+                /* 鼠标手型 */
+                font-size: 14px;
+                /* 文字大小 */
+                transition: background-color 0.2s;
+                /* 颜色过渡动画 */
+
+                /* 鼠标悬停状态 */
+                &:hover {
+                    background-color: #3a8c56;
+                    /* 深绿色 */
+                }
+
+                /* 激活/选中状态 */
+                &.激活 {
+                    background-color: #217346;
+                    /* 更深绿色 */
+                    font-weight: bold;
+                    /* 加粗 */
+                }
+            }
+        }
+
+        /* 二级列表（右侧内容区） */
+        &>.二级列表 {
+            flex: 1;
+            /* 填充剩余空间 */
+            background-color: #f1f8f4;
+            /* 浅绿色背景 */
+            overflow-y: auto;
+            /* 垂直滚动条 */
+            padding: 5px 0;
+            /* 上下内边距 */
+
+            /* 二级列表项 */
+            &>.二级列表项 {
+                padding: 8px 12px;
+                /* 内边距 */
+                border-bottom: 1px solid #e0e0e0;
+                /* 底部边框 */
+                transition: background-color 0.2s;
+                /* 颜色过渡动画 */
+
+                /* 鼠标悬停状态 */
+                &:hover {
+                    background-color: #e0f0e8;
+                    /* 更浅绿色 */
+                }
+
+                /* 激活/选中状态 */
+                &.激活 {
+                    background-color: #d0e8dc;
+                    /* 中等浅绿色 */
+                }
+
+                /* 列表键（标题）样式 */
+                &>.列表键 {
+                    color: #217346;
+                    /* 深绿色文字 */
+                    font-weight: bold;
+                    /* 加粗 */
+                    font-size: 14px;
+                    /* 文字大小 */
+                    margin-bottom: 2px;
+                    /* 与下方元素的间距 */
+                }
+
+                /* 列表值（描述）样式 */
+                &>.列表值 {
+                    color: #505653;
+                    /* 深灰色文字 */
+                    font-size: 13px;
+                    /* 略小的文字 */
+                }
+            }
+        }
+    }
+}
+
+/* 主内容区域 */
+.内容栏 {
+    background-color: #efefef;
+    /* 白色背景 */
+    flex: 8;
+    /* 在flex布局中占比 */
+    padding: 20px;
+    /* 内边距 */
+    border-left: 1px solid #e0e0e0;
+    /* 左侧边框 */
+}

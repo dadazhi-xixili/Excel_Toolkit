@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Excel_Toolkit.css">
+    <title>Excel Toolkit</title>
+</head>
+
+<body>
+
+    <div class="导航栏">
+        <div class="搜索栏">
+            <input placeholder="输入要搜索的内容"><button>搜索</button>
+        </div>
+        <div class="分类">
+            <div class="一级列表">
+                <div class="一级列表项 激活">基础</div>
+                <div class="一级列表项">文本</div>
+            </div>
+
+            <div class="二级列表">
+                <div class="二级列表项 激活">
+                    <div class="列表键">Character.FromNumber</div>
+                    <div class="列表值">将数字转换为对应的Unicode字符</div>
+                </div>
+                <div class="二级列表项">
+                    <div class="列表键">Character.ToNumber</div>
+                    <div class="列表值">将字符转换为对应的Unicode数字</div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="内容栏">
+        <h2>示例数据</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>A</th>
+                    <th>B</th>
+                    <th>C</th>
+                    <th>D</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>示例</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>示例</th>
+                    <th>结果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>示例 1</td>
+                    <td>=B2</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>示例 2</td>
+                    <td>=A1:A3</td>
+                    <td>{1;5;9}</td>
+                </tr>
+                <tr>
+                    <td>示例 3</td>
+                    <td>=A1:C1</td>
+                    <td>{1,2,3}</td>
+                </tr>
+                <tr>
+                    <td>示例 4</td>
+                    <td>=A1:B2</td>
+                    <td>{1,2;5,6}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

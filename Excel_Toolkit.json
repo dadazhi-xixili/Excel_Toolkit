@@ -1,0 +1,31 @@
+{
+    "文本": {
+        "Text.Length": {
+            "synopsis": "返回文本长度",
+            "data": ""
+        },
+        "Text.Upper": {
+            "synopsis": "转换为大写",
+            "data": ""
+        },
+        "Text.Lower": {
+            "synopsis": "转换为小写",
+            "data": ""
+        }
+    },
+    "日期": {
+        "Date.Today": {
+            "synopsis": "返回今天的日期",
+            "data": ""
+        },
+        "Date.Now": {
+            "synopsis": "返回当前日期和时间",
+            "data": ""
+        },
+        "Date.Year": {
+            "synopsis": "返回年份",
+            "data": ""
+        }
+    },
+    "基础": {}
+}
