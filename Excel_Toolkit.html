@@ -35,79 +35,13 @@
     </div>
     <div class="内容栏">
         <h2>示例数据</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>A</th>
-                    <th>B</th>
-                    <th>C</th>
-                    <th>D</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>3</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>5</td>
-                    <td>6</td>
-                    <td>7</td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>9</td>
-                    <td>10</td>
-                    <td>11</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>13</td>
-                    <td>14</td>
-                    <td>15</td>
-                    <td>16</td>
-                </tr>
-            </tbody>
-        </table>
-        <h2>示例</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>示例</th>
-                    <th>结果</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>示例 1</td>
-                    <td>=B2</td>
-                    <td>6</td>
-                </tr>
-                <tr>
-                    <td>示例 2</td>
-                    <td>=A1:A3</td>
-                    <td>{1;5;9}</td>
-                </tr>
-                <tr>
-                    <td>示例 3</td>
-                    <td>=A1:C1</td>
-                    <td>{1,2,3}</td>
-                </tr>
-                <tr>
-                    <td>示例 4</td>
-                    <td>=A1:B2</td>
-                    <td>{1,2;5,6}</td>
-                </tr>
-            </tbody>
-        </table>
+<table><thead><tr><th></th><th>A</th><th>B</th><th>C</th><th>D</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>2</td><td>3</td><td>4</td></tr><tr><td>2</td><td>5</td><td>6</td><td>7</td><td>8</td></tr><tr><td>3</td><td>9</td><td>10</td><td>11</td><td>12</td></tr><tr><td>4</td><td>13</td><td>14</td><td>15</td><td>16</td></tr></tbody></table>
+<h2>示例</h2>
+<table><thead><tr><th>说明</th><th>示例</th><th>结果</th></tr></thead><tbody><tr><td>单元格</td><td>=B2</td><td>6</td></tr></tbody></table>
+<table><thead><tr><th>说明</th><th>示例</th><th>结果</th><th>结果</th><th></th><th></th></tr></thead><tbody><tr><td>连续区域</td><td>=A1:A3</td><td>{1;5;9}</td><td>1</td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>5</td><td></td><td></td></tr><tr><td></td><td></td><td></td><td>9</td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>连续区域</td><td>=A1:C1</td><td>{1,2,3}</td><td>1</td><td>2</td><td>3</td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>连续区域</td><td>=A1:B2</td><td>{1,2;5,6}</td><td>1</td><td>2</td><td></td></tr><tr><td></td><td></td><td></td><td>5</td><td>6</td><td></td></tr></tbody></table>
+<table><thead><tr><th>说明</th><th>示例</th><th>结果</th></tr></thead><tbody><tr><td>整列</td><td>A:A</td><td>A 列整列</td></tr><tr><td></td><td></td><td></td></tr><tr><td>整行</td><td>1:1</td><td>1 行整行</td></tr></tbody></table>
+<table><thead><tr><th>说明</th><th>示例</th><th>结果</th><th>结果</th><th></th></tr></thead><tbody><tr><td>连续区域扩张</td><td>=A1:B1:B2</td><td>{1,2;5,6}</td><td>1</td><td>2</td></tr><tr><td></td><td></td><td></td><td>5</td><td>6</td></tr></tbody></table>
+<table><thead><tr><th>说明</th><th>示例</th><th>结果</th><th>结果</th><th></th></tr></thead><tbody><tr><td>交集区域</td><td>=B1:B4 A1:D1</td><td>2</td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr><tr><td>交集区域</td><td>=A1:B4 B3:C4</td><td>{6;10}</td><td>6</td><td></td></tr><tr><td></td><td></td><td></td><td>10</td><td></td></tr></tbody></table>
     </div>
 
 </body>
