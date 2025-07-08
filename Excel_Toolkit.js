@@ -9,22 +9,21 @@ fetch("Excel_Toolkit.json")
         add_level1();
         一级 = Object.keys(index)[0];
         add_level2(一级);
-
     });
 
 window.addEventListener("pywebviewready", () => {
     api = window.pywebview.api;
 });
 function add_level1() {
-    let class_name = "一级列表项 激活"
+    let class_name = "一级列表项 激活";
     let html = "";
     for (let i in index) {
         html += `<div class="${class_name}">${i}</div>`;
         class_name = "一级列表项";
     }
     一级列表.innerHTML = html;
-    一级列表.querySelectorAll('.一级列表项').forEach(item => {
-        item.addEventListener('click', level1_click);
+    一级列表.querySelectorAll(".一级列表项").forEach((item) => {
+        item.addEventListener("click", level1_click);
     });
 }
 function add_level2(level1) {
@@ -39,30 +38,29 @@ function add_level2(level1) {
                  </div>`;
     }
     二级列表.innerHTML = html;
-    二级列表.querySelectorAll('.二级列表项').forEach(item => {
-        item.addEventListener('click', level2_click);
+    二级列表.querySelectorAll(".二级列表项").forEach((item) => {
+        item.addEventListener("click", level2_click);
     });
 }
 function level1_click() {
-    一级列表.querySelectorAll('.一级列表项').forEach(item => {
-        item.classList.remove('激活');
+    一级列表.querySelectorAll(".一级列表项").forEach((item) => {
+        item.classList.remove("激活");
     });
-    this.classList.add('激活');
+    this.classList.add("激活");
     一级 = this.textContent;
     内容.innerHTML = "";
     add_level2(一级);
 }
 function level2_click() {
-    二级列表.querySelectorAll('.二级列表项').forEach(item => {
-        item.classList.remove('激活');
+    二级列表.querySelectorAll(".二级列表项").forEach((item) => {
+        item.classList.remove("激活");
     });
-    this.classList.add('激活');
-    二级 = this.querySelector('.列表键').textContent
-    add_insert(一级, 二级)
+    this.classList.add("激活");
+    二级 = this.querySelector(".列表键").textContent;
+    add_insert(一级, 二级);
 }
 function add_insert(一级, 二级) {
-    let path = `data/${一级}/${二级}.html`;
-    api.get_content(path).then((html) => {
+    api.get_content(`data/${一级}/${二级}.html`).then((html) => {
         内容.innerHTML = "";
         内容.innerHTML = html;
     });

@@ -27,14 +27,14 @@ html {
   flex-direction: column;
   border-right: 1px solid #d0d0d0;
 
-  &>.搜索栏 {
+  & > .搜索栏 {
     display: flex;
     align-items: center;
     padding: 10px;
     background-color: #2d7d4f;
     border-bottom: 1px solid #1a5c38;
 
-    &>input {
+    & > input {
       flex: 1;
       height: 28px;
       min-width: 0;
@@ -44,7 +44,7 @@ html {
       background-color: #f1f8f4;
     }
 
-    &>button {
+    & > button {
       height: 28px;
       width: 60px;
       margin-left: 8px;
@@ -60,17 +60,17 @@ html {
     }
   }
 
-  &>.分类 {
+  & > .分类 {
     display: flex;
     flex: 1;
     overflow: hidden;
 
-    &>.一级列表 {
+    & > .一级列表 {
       min-width: 80px;
       background-color: #2d7d4f;
       color: #f0f0f0;
 
-      &>.一级列表项 {
+      & > .一级列表项 {
         padding: 12px 8px;
         border-bottom: 1px solid #3a8c56;
         cursor: pointer;
@@ -88,13 +88,13 @@ html {
       }
     }
 
-    &>.二级列表 {
+    & > .二级列表 {
       flex: 1;
       background-color: #f1f8f4;
       overflow-y: auto;
       padding: 5px 0;
 
-      &>.二级列表项 {
+      & > .二级列表项 {
         padding: 8px 12px;
         border-bottom: 1px solid #e0e0e0;
         transition: background-color 0.2s;
@@ -107,14 +107,14 @@ html {
           background-color: #d0e8dc;
         }
 
-        &>.列表键 {
+        & > .列表键 {
           color: #217346;
           font-weight: bold;
           font-size: 14px;
           margin-bottom: 2px;
         }
 
-        &>.列表值 {
+        & > .列表值 {
           color: #505653;
           font-size: 13px;
         }
@@ -132,6 +132,18 @@ html {
 
   ol {
     padding-left: 20px;
+
+    li {
+      padding-top: 15px;
+    }
+  }
+
+  ul {
+    padding-left: 20px;
+
+    li {
+      padding-top: 5px;
+    }
   }
 
   h2 {
