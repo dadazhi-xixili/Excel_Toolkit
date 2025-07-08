@@ -1,0 +1,44 @@
+<h2>语法</h2>
+<p>
+  <strong>LET</strong>(名称1,表达式1[,名称2,表达式2,...],返回)
+  <strong>LET</strong>(name1,calculation1[,name2,calculation2,...],output)
+</p>
+<h3>参数</h3>
+<ol>
+  <li>名称 name：定义变量的名称。</li>
+  <li>表达式 calculation1：定义变量的计算公式。</li>
+  <li>返回 output：返回的计算结果。</li>
+  <li>名称n name_n: 多个变量名称。</li>
+  <li>表达式n calculation_n: 多个变量的计算公式。</li>
+</ol>
+<h2>概述</h2>
+<p>
+  LET 函数用于定义多个变量，并返回计算结果。<br />
+  可重复使用变量结果，避免重复计算。
+</p>
+<h3>常见错误</h3>
+<ol>
+  <li>名称必须是唯一。</li>
+  <li>名称与表达式必须成对。</li>
+  <li>
+    定义名称不能与已有的环境名称冲突，如A1、函数名、名称管理器中的名称等。
+  </li>
+</ol>
+<h2>示例</h2>
+<h3>示例1</h3>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">LET(x,1,y,2,z,x+y,z*x*y)
+</span></code></pre>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">计算过程：
+</span><span class="code-line line-number" line="2">LET(x,1,y,2,z,1+2,z*x*y)
+</span><span class="code-line line-number" line="3">LET(x,1,y,2,z,3,x*y*z)
+</span><span class="code-line line-number" line="4">LET(x,1,y,2,z,3,1*2*3)
+</span><span class="code-line line-number" line="5">6
+</span></code></pre>
+<h3>示例2</h3>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">LET(f,LAMBDA(x,y,x+y),f(1,2))
+</span></code></pre>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">计算过程
+</span><span class="code-line line-number" line="2">LAMBDA(x,y,x+y)(1,2)
+</span><span class="code-line line-number" line="3">1+2
+</span><span class="code-line line-number" line="4">3
+</span></code></pre>

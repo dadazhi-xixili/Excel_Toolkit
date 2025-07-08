@@ -1,0 +1,143 @@
+<h2>语法</h2>
+<p>
+  <strong>BYCOL</strong>(数组,自定义函数(列,表达式) | 函数)<br />
+  <strong>BYCOL</strong>(array,LAMBDA(column,calculation) | function)
+</p>
+<h3>参数</h3>
+<ol>
+  <li>数组 array：要处理的数组。</li>
+  <li>自定义函数 LAMBDA：处理数组的函数。</li>
+  <li>函数 function：处理数组的函数。</li>
+  <li>列 column：当前处理的列，名称可以自定义。</li>
+</ol>
+<h2>概述</h2>
+<p>BYCOL 函数用于对数组中的每一列执列传入的函数。</p>
+<h3>常见错误</h3>
+<ol>
+  <li>传入的函数返回必须是一个值，不能是数组，否则因无法展开报错。</li>
+</ol>
+<h2>示例</h2>
+<h3>示例源</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+<h4>传入自定义函数</h4>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">BYCOL(A1:C3,LAMBDA(row,SUM(row)*2))
+</span></code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>过程</td>
+      <td>SUM({1;4;7})*2</td>
+      <td>SUM({2;5;8})*2</td>
+      <td>SUM({3;6;9})*2</td>
+    </tr>
+    <tr>
+      <td>返回</td>
+      <td>24</td>
+      <td>30</td>
+      <td>36</td>
+    </tr>
+  </tbody>
+</table>
+<h4>传入函数</h4>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">BYCOL(A1:C3,SUM)
+</span></code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>过程</td>
+      <td>SUM({1;4;7})</td>
+      <td>SUM({2;5;8})</td>
+      <td>SUM({3;6;9})</td>
+    </tr>
+    <tr>
+      <td>返回</td>
+      <td>12</td>
+      <td>15</td>
+      <td>18</td>
+    </tr>
+  </tbody>
+</table>
