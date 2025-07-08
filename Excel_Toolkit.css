@@ -1,8 +1,13 @@
+/* @font-face {
+  font-family: "Sarasa";
+  src: url("SarasaMonoSC-Regular.ttf") format("truetype");
+  font-display: swap;
+} */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "微软雅黑";
+  font-family: "微软雅黑", "Sarasa";
 }
 
 html {
@@ -40,7 +45,7 @@ html {
       min-width: 0;
       padding: 0 8px;
       border: 1px solid #1a5c38;
-      border-radius: 3px;
+      border-radius: 5px;
       background-color: #f1f8f4;
     }
 
@@ -51,7 +56,7 @@ html {
       background-color: #4a9d66;
       color: white;
       border: 1px solid #3a7d52;
-      border-radius: 3px;
+      border-radius: 5px;
       cursor: pointer;
 
       &:hover {
@@ -117,6 +122,11 @@ html {
         & > .列表值 {
           color: #505653;
           font-size: 13px;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
         }
       }
     }
@@ -152,6 +162,22 @@ html {
 
   h3 {
     padding-top: 10px;
+  }
+
+  pre {
+    display: inline-block;
+    background-color: #bdbdbd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    vertical-align: top;
+
+    code,
+    span {
+      /* font-family: "Sarasa"; */
+      letter-spacing: 1px;
+      font-weight: 550;
+    }
   }
 
   table {

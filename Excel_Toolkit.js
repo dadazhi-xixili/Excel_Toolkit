@@ -63,5 +63,8 @@ function add_insert(一级, 二级) {
     api.get_content(`data/${一级}/${二级}.html`).then((html) => {
         内容.innerHTML = "";
         内容.innerHTML = html;
-    });
+    }).catch((e)=>{
+        内容.innerHTML = "无对应内容"
+    })
+    
 }
