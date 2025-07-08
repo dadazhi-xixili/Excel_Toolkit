@@ -1,0 +1,223 @@
+<h2>语法</h2>
+<p>
+  <strong>SCAN</strong>([初始值],数组,自定义函数(累加器,当前值,表达式) | 函数)
+  <strong>SCAN</strong>([initial_value],array,lambda(accumulator,value,body) |
+  function)
+</p>
+<h3>参数</h3>
+<ol>
+  <li>初始值 initial_value：初始值。</li>
+  <li>数组 array：要处理的数组。</li>
+  <li>
+    自定义函数 LAMBDA：处理数组的函数。
+    <ul>
+      <li>累加器 accumulator：上一步的结果。</li>
+      <li>当前值 value：当前处理的值。</li>
+      <li>表达式 body：处理数组的表达式。</li>
+    </ul>
+  </li>
+  <li>函数 function：处理数组的函数。</li>
+</ol>
+<h2>概述</h2>
+<p>对数组中的每个元素应用一个累加函数，并返回每个中间结果的数组。</p>
+<h3>常见错误</h3>
+<ol>
+  <li>传入的函数返回必须是一个值，不能是数组，否则因无法展开报错。</li>
+</ol>
+<h3>补充</h3>
+<ol>
+  <li>当初始值省略时，初始值为数组的第一个元素。</li>
+</ol>
+<h2>示例</h2>
+<h3>示例 1</h3>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">SCAN(,{1,2,3},SUM)
+</span></code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>过程</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>过程</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>1+2</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>过程</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>1+2</td>
+      <td>3+3</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>返回</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>1</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+<h3>示例 2</h3>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">SCAN("0到10的偶数有：0",SEQUENCE(10),LAMBDA(x,y,IF(ISEVEN(y),x&amp;","&amp;y,x)))
+</span></code></pre>
+
+<table>
+  <thead>
+    <tr>
+      <th>过程</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>
+        IF(ISEVEN(1),"0 到 10 的偶数有：0"&amp;","&amp;1,"0 到 10 的偶数有：0")
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>过程</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>"0 到 10 的偶数有：0"</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        IF(ISEVEN(2),"0 到 10 的偶数有：0"&amp;","&amp;2,"0 到 10 的偶数有：0")
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>过程</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>"0 到 10 的偶数有：0"</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>"0 到 10 的偶数有：0,2"</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        IF(ISEVEN(3),"0 到 10 的偶数有：0,2"&amp;","&amp;3,"0 到 10
+        的偶数有：0,2")
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>....</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>返回</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0,2</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0,2</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0,2,4</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0,2,4</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0,2,4,6</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0,2,4,6</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0,2,4,6,8</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0,2,4,6,8</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>0 到 10 的偶数有：0,2,4,6,8,10</td>
+    </tr>
+  </tbody>
+</table>
