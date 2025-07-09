@@ -60,12 +60,23 @@ function level2_click() {
     add_insert(一级, 二级);
 }
 function add_insert(一级, 二级) {
-    api.get_content(`data/${一级}/${二级}.html`).then((html) => {
-        内容.innerHTML = "";
-        内容.innerHTML = html;
-        内容.scrollTo({top:0,behavior:'smooth'});
-    }).catch((e)=>{
-        内容.innerHTML = "无对应内容"
-    })
-    
+    fetch(`data/${一级}/${二级}.html`)
+        .then((x) => x.text())
+        .then((html) => {
+            内容.innerHTML = "";
+            内容.innerHTML = html;
+            内容.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        )
+
+    // api.get_content(`data/${一级}/${二级}.html`)
+    //     .then((html) => {
+    //         内容.innerHTML = "";
+    //         内容.innerHTML = html;
+    //         内容.scrollTo({ top: 0, behavior: "smooth" });
+    //     }
+    //     )
+    //     .catch((e) => {
+    //         内容.innerHTML = "无对应内容";
+    //     });
 }
