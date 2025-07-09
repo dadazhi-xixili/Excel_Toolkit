@@ -63,6 +63,7 @@ function add_insert(一级, 二级) {
     api.get_content(`data/${一级}/${二级}.html`).then((html) => {
         内容.innerHTML = "";
         内容.innerHTML = html;
+        内容.scrollTo({top:0,behavior:'smooth'});
     }).catch((e)=>{
         内容.innerHTML = "无对应内容"
     })
