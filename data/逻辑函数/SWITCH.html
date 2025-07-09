@@ -1,0 +1,51 @@
+<h2>语法</h2>
+<p>
+  <strong>SWITCH</strong
+  >(匹配值,匹配项1,返回值1[,匹配项2,返回值2,...匹配项126,返回值126,默认值])
+  <strong>SWITCH</strong
+  >(expression,value1,result1[,value2,result2,...value126,result126,default])
+</p>
+<h3>参数</h3>
+<ol>
+  <li>匹配值 expression：要匹配的值。</li>
+  <li>匹配项 value: 与匹配值进行比较的值。</li>
+  <li>返回值 result：如果匹配项的值等于匹配值，则返回该值。</li>
+  <li>默认值 default：如果匹配项的值都不等于匹配值，则返回该值。</li>
+</ol>
+<h2>概述</h2>
+<p>返回匹配值的对应的匹配项。</p>
+<h3>补充</h3>
+<ol>
+  <li>与IF和IFS函数不同，匹配项如果传入表达式，会先进行运算。</li>
+</ol>
+<h2>常见错误</h2>
+<ol>
+  <li>匹配项与返回值应该成对输入，否则报错。</li>
+  <li>当省略默认值且无对应匹配项是，返回#N/A。</li>
+</ol>
+<h2>示例</h2>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">A1 = 60
+</span><span class="code-line line-number" line="2">SWITCH(TRUE,A1&gt;=90,"A",A1&gt;=80,"B",A1&gt;=70,"C",A1&gt;=60,"D","E")
+</span><span class="code-line line-number" line="3">过程：
+</span><span class="code-line line-number" line="4">SWITCH(TRUE,FALSE,"A",FALSE,"B",FALSE,"C",TRUE,"D","E")
+</span><span class="code-line line-number" line="5">SWITCH(TRUE,FALSE,"B",FALSE,"C",TRUE,"D","E")
+</span><span class="code-line line-number" line="6">SWITCH(TRUE,FALSE,"C",TRUE,"D","E")
+</span><span class="code-line line-number" line="7">SWITCH(TRUE,TRUE,"D","E")
+</span><span class="code-line line-number" line="8">输出：
+</span><span class="code-line line-number" line="9">"D"
+</span></code></pre>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">SWITCH(2,1,"周日",2, "周一",3, "周二",4, "周三",5, "周四",
+</span><span class="code-line line-number" line="2">6, "周五",7, "周六","无效日期")
+</span><span class="code-line line-number" line="3">输出：
+</span><span class="code-line line-number" line="4">"周一"
+</span><span class="code-line line-number" line="5">
+</span><span class="code-line line-number" line="6">SWITCH(8,1,"周日",2, "周一",3, "周二",4, "周三",5, "周四",
+</span><span class="code-line line-number" line="7">6, "周五",7, "周六","无效日期")
+</span><span class="code-line line-number" line="8">输出：
+</span><span class="code-line line-number" line="9">"无效日期”
+</span><span class="code-line line-number" line="10">
+</span><span class="code-line line-number" line="11">SWITCH(8,1,"周日",2, "周一",3, "周二",4, "周三",5, "周四",
+</span><span class="code-line line-number" line="12">6, "周五",7, "周六")
+</span><span class="code-line line-number" line="13">输出：
+</span><span class="code-line line-number" line="14">#N/A
+</span></code></pre>

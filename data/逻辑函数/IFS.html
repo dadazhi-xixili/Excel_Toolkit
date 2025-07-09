@@ -1,0 +1,41 @@
+<h2>语法</h2>
+<p>
+  <strong>IF</strong>(逻辑表达式,真值,假值)
+  <strong>IF</strong>(logical_test,value_if_true,[value_if_false])
+</p>
+<h3>参数</h3>
+<ol>
+  <li>逻辑表达式 logical_test：返回逻辑值或数值的表达式。</li>
+  <li>真值 value_if_true：逻辑表达式为 TRUE 或 非零数值 时返回的值。</li>
+  <li>假值 value_if_false：逻辑表达式为 FALSE 或 0 时返回的值。</li>
+</ol>
+<h2>概述</h2>
+<p>判断逻辑表达式的值，返回真值或假值。</p>
+<h2>补充</h2>
+<ol>
+  <li>在不输入逻辑表达式的情况下默认返回假值。</li>
+  <li>真值默认为0。</li>
+  <li>假值省略为FALSE，默认为0。</li>
+</ol>
+<h2>示例</h2>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">IF(1&gt;2,"真","假")
+</span><span class="code-line line-number" line="2">过程：
+</span><span class="code-line line-number" line="3">IF(FALSE,"真","假")
+</span><span class="code-line line-number" line="4">输出：
+</span><span class="code-line line-number" line="5">假
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7">IF(1-1,"真","假")
+</span><span class="code-line line-number" line="8">过程：
+</span><span class="code-line line-number" line="9">IF(0,"真","假")
+</span><span class="code-line line-number" line="10">输出：
+</span><span class="code-line line-number" line="11">假
+</span><span class="code-line line-number" line="12">
+</span><span class="code-line line-number" line="13">
+</span><span class="code-line line-number" line="14">IF(,)
+</span><span class="code-line line-number" line="15">输出：
+</span><span class="code-line line-number" line="16">FALSAE
+</span><span class="code-line line-number" line="17">
+</span><span class="code-line line-number" line="18">IF(,,)
+</span><span class="code-line line-number" line="19">输出：
+</span><span class="code-line line-number" line="20">0
+</span></code></pre>

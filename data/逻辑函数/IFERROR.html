@@ -1,0 +1,23 @@
+<h2>语法</h2>
+<p>
+  <strong>IFERROR</strong>(值,错误返回值)
+  <strong>IFERROR</strong>(value,value_if_error)
+</p>
+<h3>参数</h3>
+<ol>
+  <li>值 value：要检查的值。</li>
+  <li>错误返回值 value_if_error：如果值包含错误，则返回该值。</li>
+</ol>
+<h2>概述</h2>
+<p>值参数如果捕获任何错误值，则返回指定值。</p>
+<h2>补充</h2>
+<ol>
+  <li>value_if_error默认为0，但","必须输入。</li>
+</ol>
+<h2>示例</h2>
+<pre><code class="language-excel code-highlight"><span class="code-line line-number" line="1">IFERROR(1/0,)
+</span><span class="code-line line-number" line="2">过程：
+</span><span class="code-line line-number" line="3">IFERROR(#DIV/0!,0)
+</span><span class="code-line line-number" line="4">输出：
+</span><span class="code-line line-number" line="5">0
+</span></code></pre>
