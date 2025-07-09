@@ -1,1 +1,4 @@
 to_exe
+.venv
+.vscode
+.mypy_cache
