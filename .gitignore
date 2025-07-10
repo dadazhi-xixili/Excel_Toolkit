@@ -2,3 +2,4 @@ to_exe
 .venv
 .vscode
 .mypy_cache
+__pycache__/SQLite.cpython-311.pyc
