@@ -1,90 +1,94 @@
-let api, level1, level2;
-let level1_arr, level2_arr;
-let ele_level1, ele_level2, ele_content, ele_searchButton, ele_searchInput;
-
-
-
-window.addEventListener("pywebviewready", () => {
-    api = window.pywebview.api;
-    api.get_level1().then((x) => {
-        level1_arr = x;
-        ele_content = document.getElementById("内容栏");
-        ele_level1 = document.getElementById("一级列表");
-        ele_level2 = document.getElementById("二级列表");
-        ele_searchButton = document.getElementById("searchButton");
-        ele_searchInput = document.getElementById("searchInput");
-        load_level1(level1_arr);
-        load_level2(level1_arr[0]);
-        ele_searchInput.addEventListener("keyup", function (event) { if (event.key === "Enter") { search(); } });
-    });
-});
-function load_level1(level1_arr) {
-    let class_name = "一级列表项 激活";
-    let html = "";
-    for (let i of level1_arr) {
-        html += `<div class="${class_name}">${i}</div>`;
-        class_name = "一级列表项";
+class Ele {
+    constructor() {
+        this.level1 = document.getElementById("一级列表");
+        this.level2 = document.getElementById("二级列表");
+        this.content = document.getElementById("内容栏");
+        this.searchButton = document.getElementById("searchButton");
+        this.searchInput = document.getElementById("searchInput");
     }
-    ele_level1.innerHTML = html;
-    ele_level1.querySelectorAll(".一级列表项").forEach((item) => {
-        item.addEventListener("click", level1_click);
-    });
 }
-function load_level2(level1_key) {
-    api.get_level2(level1_key).then((x) => {
-        let html = "";
-        for (let i of x) {
-            html += `<div class="二级列表项" data-key="${i[0]}">
-                    <div class="列表键">${i[0]}</div>
-                    <div class="列表值">${i[1]}</div>
-                 </div>`;
-        }
-        ele_level2.innerHTML = html;
-        ele_level2.querySelectorAll(".二级列表项").forEach((item) => {
-            item.addEventListener("click", level2_click);
-        });
-    });
-}
-function search() {
-    api.get(ele_searchInput.value).then(x => {
-        html = ""
-        for (i of x) {
-            html += `<div class="二级列表项" data-key="${i[1]}">
-                    <div class="列表键">${i[1]}</div>
-                    <div class="列表值">${i[2]}</div>
-                 </div>`;
-        }
-        console.log(html)
-        ele_level2.innerHTML = html;
-        ele_level2.querySelectorAll(".二级列表项").forEach((item) => {
-            item.addEventListener("click", level2_click);
-        });
-    })
+class Api {
+    constructor() {
+        let api = window.pywebview.api;
+        this.get_level1 = api.get_level1;
+        this.get_level2 = api.get_level2;
+        this.get_by_menu = api.get_by_menu;
+        this.get = api.get;
+    }
 }
 
-function load_content(level1_key, level2_key) {
-    api
-        .get_by_menu(level1_key, level2_key)
-        .then(x => {
-            ele_content.innerHTML = "";
-            ele_content.innerHTML = x[0][3];
-            ele_content.scrollTo({ top: 0, behavior: "smooth" });
-        })
+class Layout {
+    constructor() {
+        this.level1 = ''
+        this.level2 = ''
+        this.api = new Api();
+        this.ele = new Ele();
+        this.load_level1();
+    }
+
+    load_level1() {
+        this.api
+            .get_level1()
+            .then(level1_arr => {
+                let html = '', class_name = "一级列表项 激活";
+                for (let level1_item of level1_arr) {
+                    html += `<div class="${class_name}" onclick="layout.level1_click(this)">${level1_item}</div>`;
+                    class_name = "一级列表项";
+                }
+                this.ele.level1.innerHTML = html;
+                this.level1 = this.ele.level1.firstElementChild.textContent;
+                this.laod_level2_list()
+            });
+    }
+    level1_click(click_ele) {
+        this.ele.level1
+            .childNodes
+            .forEach(ele => ele.classList.remove('激活'));
+        click_ele.classList.add('激活');
+        this.level1 = click_ele.textContent;
+        this.ele.content.innerHTML = '';
+        this.laod_level2_list()
+    }
+    laod_level2_list() {
+        this.api
+            .get_level2(this.level1)
+            .then(obj_list => this.load_level2(obj_list))
+    }
+    load_level2(obj_list) {
+        let html = '';
+        for (let item of obj_list) {
+            html += `<div class="二级列表项" data-key="${item.level2}" onclick="layout.level2_click(this)")>
+                        <div class="列表键">${item.level2}</div>
+                        <div class="列表值">${item.info}</div>
+                    </div>`;
+        }
+        this.ele.level2.innerHTML = html;
+    }
+    level2_click(click_ele) {
+        this.ele.level2
+            .childNodes
+            .forEach(ele => ele.classList.remove('激活'));
+        click_ele.classList.add('激活');
+        this.level2 = click_ele.dataset.key;
+        this.load_content();
+    }
+    load_content() {
+        this.api
+            .get_by_menu(this.level1, this.level2)
+            .then(obj => {
+                this.ele.content.innerHTML = obj.content;
+                this.ele.content.scrollTo({ top: 0, behavior: "smooth" })
+            });
+    }
+    search() {
+        this.api
+            .get(this.ele.searchInput.value)
+            .then(obj_list => this.load_level2(obj_list));
+        this.ele.level1.childNodes
+            .forEach(ele => ele.classList.remove('激活'));
+    }
 }
-function level1_click() {
-    ele_level1.querySelectorAll(".一级列表项").forEach((item) => {
-        item.classList.remove("激活");
-    });
-    this.classList.add("激活");
-    level1 = this.textContent;
-    ele_content.innerHTML = "";
-    load_level2(level1);
-}
-function level2_click() {
-    ele_level2.querySelectorAll(".二级列表项").forEach((item) => {
-        item.classList.remove("激活");
-    });
-    this.classList.add("激活");
-    level2 = this.querySelector(".列表键").textContent;
-    load_content(level1, level2);
-}
+let layout;
+window.addEventListener("pywebviewready", () => {
+    layout = new Layout()
+})
