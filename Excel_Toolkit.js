@@ -20,7 +20,6 @@ class Api {
 class Layout {
     constructor() {
         this.level1 = ''
-        this.level2 = ''
         this.api = new Api();
         this.ele = new Ele();
         this.load_level1();
@@ -41,10 +40,7 @@ class Layout {
             });
     }
     level1_click(click_ele) {
-        this.ele.level1
-            .childNodes
-            .forEach(ele => ele.classList.remove('激活'));
-        click_ele.classList.add('激活');
+        this.reset_active(click_ele)
         this.level1 = click_ele.textContent;
         this.ele.content.innerHTML = '';
         this.laod_level2_list()
@@ -57,7 +53,7 @@ class Layout {
     load_level2(obj_list) {
         let html = '';
         for (let item of obj_list) {
-            html += `<div class="二级列表项" data-key="${item.level2}" onclick="layout.level2_click(this)")>
+            html += `<div class="二级列表项"data-level1="${item.level1}"data-level2="${item.level2}"onclick="layout.level2_click(this)">
                         <div class="列表键">${item.level2}</div>
                         <div class="列表值">${item.info}</div>
                     </div>`;
@@ -65,16 +61,13 @@ class Layout {
         this.ele.level2.innerHTML = html;
     }
     level2_click(click_ele) {
-        this.ele.level2
-            .childNodes
-            .forEach(ele => ele.classList.remove('激活'));
-        click_ele.classList.add('激活');
-        this.level2 = click_ele.dataset.key;
-        this.load_content();
+        this.reset_active(click_ele);
+        let obj = click_ele.dataset;
+        this.load_content(obj.level1,obj.level2);
     }
-    load_content() {
+    load_content(level1, level2) {
         this.api
-            .get_by_menu(this.level1, this.level2)
+            .get_by_menu(level1, level2)
             .then(obj => {
                 this.ele.content.innerHTML = obj.content;
                 this.ele.content.scrollTo({ top: 0, behavior: "smooth" })
@@ -84,8 +77,11 @@ class Layout {
         this.api
             .get(this.ele.searchInput.value)
             .then(obj_list => this.load_level2(obj_list));
-        this.ele.level1.childNodes
-            .forEach(ele => ele.classList.remove('激活'));
+        this.ele.content.innerHTML = '';
+    }
+    reset_active(click_ele, new_active = true) {
+        for (let ele of click_ele.parentNode.children) { ele.classList.remove('激活') };
+        if (new_active) click_ele.classList.add('激活');
     }
 }
 let layout;

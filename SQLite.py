@@ -114,10 +114,10 @@ class SQLite:
         """获取指定一级菜单下的所有二级菜单项"""
         游标 = self._get_cursor()
         游标.execute(
-            "SELECT 二级菜单, 概述 FROM 内容表 WHERE 一级菜单=? GROUP BY 二级菜单",
+            "SELECT 一级菜单, 二级菜单, 概述 FROM 内容表 WHERE 一级菜单=? GROUP BY 二级菜单",
             (一级菜单,),
         )
-        return [{"level2": x[0], "info": x[1]} for x in 游标.fetchall()]
+        return [{"level1": x[0], "level2": x[1], "info": x[2]} for x in 游标.fetchall()]
 
     def __enter__(self):
         """支持with语句"""
