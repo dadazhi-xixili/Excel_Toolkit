@@ -19,10 +19,13 @@ class Api {
 
 class Layout {
     constructor() {
-        this.level1 = ''
-        this.api = new Api();
-        this.ele = new Ele();
-        this.load_level1();
+        window.addEventListener("pywebviewready", () => {
+            window.layout = this;
+            this.level1 = ''
+            this.api = new Api();
+            this.ele = new Ele();
+            this.load_level1();
+        })
     }
 
     load_level1() {
@@ -63,7 +66,7 @@ class Layout {
     level2_click(click_ele) {
         this.reset_active(click_ele);
         let obj = click_ele.dataset;
-        this.load_content(obj.level1,obj.level2);
+        this.load_content(obj.level1, obj.level2);
     }
     load_content(level1, level2) {
         this.api
@@ -74,17 +77,20 @@ class Layout {
             });
     }
     search() {
-        this.api
-            .get(this.ele.searchInput.value)
-            .then(obj_list => this.load_level2(obj_list));
+        let input = this.ele.searchInput.value;
+        if (input == "") return null;
+        this.api.get(input).then(obj_list => this.load_level2(obj_list));
         this.ele.content.innerHTML = '';
+        this.reset_active(this.ele.level1.firstChild, false);
     }
     reset_active(click_ele, new_active = true) {
-        for (let ele of click_ele.parentNode.children) { ele.classList.remove('激活') };
-        if (new_active) click_ele.classList.add('激活');
+        for (let ele of click_ele.parentNode.children) {
+            ele.classList.remove('激活')
+        };
+        if (new_active) {
+            click_ele.classList.add('激活')
+        };
     }
 }
-let layout;
-window.addEventListener("pywebviewready", () => {
-    layout = new Layout()
-})
+
+new Layout()

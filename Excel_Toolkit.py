@@ -2,7 +2,7 @@ import webview
 from SQLite import SQLite
 
 if __name__ == "__main__":
-    try :
+    try:
         api = SQLite()
         win = webview.create_window(
             title="Excel Toolkit",

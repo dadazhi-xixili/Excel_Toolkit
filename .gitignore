@@ -6,3 +6,4 @@ __pycache__/SQLite.cpython-311.pyc
 .vscode
 data
 Excel_Toolkit.json
+__pycache__
