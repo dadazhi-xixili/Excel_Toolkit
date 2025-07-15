@@ -34,7 +34,7 @@ class Layout {
             .then(level1_arr => {
                 let html = '', class_name = "一级列表项 激活";
                 for (let level1_item of level1_arr) {
-                    html += `<div class="${class_name}" onclick="layout.level1_click(this)">${level1_item}</div>`;
+                    html += `<div class="${class_name}" onclick="layout.level1_click(this)">${level1_item.level1}</div>`;
                     class_name = "一级列表项";
                 }
                 this.ele.level1.innerHTML = html;
