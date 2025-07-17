@@ -7,13 +7,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "微软雅黑", "Sarasa";
+  font-family:  "微软雅黑", "Consolas";
 }
 
 html {
   overflow: hidden;
   height: 100%;
-
   & body {
     height: 100%;
     display: flex;
@@ -173,6 +172,7 @@ html {
     margin: 10px;
     border-radius: 5px;
     vertical-align: top;
+	font-family: "Consolas";
 
     code,
     span {
@@ -185,8 +185,10 @@ html {
   table {
     border-collapse: collapse;
     margin: 5px;
+	font-family: "Consolas";
 
     thead {
+
       th {
         background-color: #f0f0f0;
         border: 1px solid #d4d4d4;
@@ -203,6 +205,7 @@ html {
     }
 
     tbody {
+
       td {
         border: 1px solid #d4d4d4;
         padding: 6px 10px;
@@ -223,36 +226,3 @@ html {
     }
   }
 }
-
-/* .标题栏 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 32px;
-  line-height: 32px;
-  background-color: #217346;
-  color: white;
-  padding: 0 12px;
-  font-weight: bold;
-  font-size: 14px;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  user-select: none;
-  -webkit-user-select: none;
-  border-bottom: 1px solid #1a5c38;
-
-  .窗口按钮 {
-    font-size: 16px;
-    cursor: pointer;
-    padding: 0 8px;
-    transition: background-color 0.2s;
-
-    &:hover {
-      background-color: #3a8c56;
-      border-radius: 4px;
-    }
-  }
-} */
